@@ -1,0 +1,22 @@
+{
+  "name": "@commerceos/api",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --import tsx src/server.ts",
+    "start": "node --import tsx src/server.ts",
+    "build": "tsc --noEmit",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@commerceos/shared": "*",
+    "@hono/node-server": "^1.19.6",
+    "hono": "^4.10.1"
+  },
+  "devDependencies": {
+    "@commerceos/tooling": "*",
+    "tsx": "^4.21.0"
+  }
+}

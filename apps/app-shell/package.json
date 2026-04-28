@@ -42,10 +42,5 @@
   },
   "devDependencies": {
     "@commerceos/tooling": "*"
-  },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
   }
 }
