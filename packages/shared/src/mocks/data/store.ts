@@ -25,39 +25,44 @@ const STORE_PERSISTENCE_KEY = "commerceos.mock.store.v1";
 
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
 
+type Membership = {
+  userId: string;
+  accountId: string;
+  role: RoleKey;
+  status: "active" | "inactive";
+  lastActiveAt: string;
+};
+
+export interface StoreSnapshot {
+  usersById: Record<string, AuthUser & { password: string }>;
+  memberships: Membership[];
+  tenantDataByAccountId: Record<string, TenantData>;
+  accountsById: Record<string, Account>;
+  permissionPoliciesByAccountId: Record<string, AccountPermissionPolicy>;
+}
+
+let onStorePersist: ((snapshot: StoreSnapshot) => void) | null = null;
+
 function readPersistedStore() {
   if (typeof window === "undefined") return null;
 
   try {
     const raw = window.localStorage.getItem(STORE_PERSISTENCE_KEY);
     if (!raw) return null;
-    return JSON.parse(raw) as {
-      usersById?: Record<string, AuthUser & { password: string }>;
-      memberships?: Array<{
-        userId: string;
-        accountId: string;
-        role: RoleKey;
-        status: "active" | "inactive";
-        lastActiveAt: string;
-      }>;
-      tenantDataByAccountId?: Record<string, TenantData>;
-    };
+    return JSON.parse(raw) as Partial<StoreSnapshot>;
   } catch {
     return null;
   }
 }
 
 function persistStore() {
-  if (typeof window === "undefined") return;
+  const snapshot = exportStoreSnapshot();
 
-  window.localStorage.setItem(
-    STORE_PERSISTENCE_KEY,
-    JSON.stringify({
-      usersById,
-      memberships,
-      tenantDataByAccountId,
-    }),
-  );
+  if (typeof window !== "undefined") {
+    window.localStorage.setItem(STORE_PERSISTENCE_KEY, JSON.stringify(snapshot));
+  }
+
+  onStorePersist?.(snapshot);
 }
 
 const collections: Collection[] = [
@@ -71,7 +76,7 @@ const priceLists: PriceList[] = [
   { id: "price_2", name: "VIP Retention", segment: "VIP" },
 ];
 
-const accountsById: Record<string, Account> = {
+const defaultAccountsById: Record<string, Account> = {
   acct_northstar: {
     id: "acct_northstar",
     name: "Northstar Outfitters",
@@ -126,13 +131,7 @@ const defaultUsersById: Record<string, AuthUser & { password: string }> = {
   },
 };
 
-const defaultMemberships: Array<{
-  userId: string;
-  accountId: string;
-  role: RoleKey;
-  status: "active" | "inactive";
-  lastActiveAt: string;
-}> = [
+const defaultMemberships: Membership[] = [
   { userId: "user_owner", accountId: "acct_northstar", role: "account_owner", status: "active", lastActiveAt: "2026-04-18" },
   { userId: "user_owner", accountId: "acct_atelier", role: "account_owner", status: "active", lastActiveAt: "2026-04-18" },
   { userId: "user_admin", accountId: "acct_northstar", role: "admin", status: "active", lastActiveAt: "2026-04-17" },
@@ -141,20 +140,21 @@ const defaultMemberships: Array<{
 
 const persistedStore = readPersistedStore();
 
-const usersById: Record<string, AuthUser & { password: string }> = {
+let usersById: Record<string, AuthUser & { password: string }> = {
   ...defaultUsersById,
   ...persistedStore?.usersById,
 };
 
-let memberships: Array<{
-  userId: string;
-  accountId: string;
-  role: RoleKey;
-  status: "active" | "inactive";
-  lastActiveAt: string;
-}> = persistedStore?.memberships ? clone(persistedStore.memberships) : clone(defaultMemberships);
+let memberships: Membership[] = persistedStore?.memberships ? clone(persistedStore.memberships) : clone(defaultMemberships);
 
-const permissionPoliciesByAccountId: Record<string, AccountPermissionPolicy> = {
+let accountsById: Record<string, Account> = persistedStore?.accountsById
+  ? {
+      ...defaultAccountsById,
+      ...clone(persistedStore.accountsById),
+    }
+  : clone(defaultAccountsById);
+
+const defaultPermissionPoliciesByAccountId: Record<string, AccountPermissionPolicy> = {
   acct_northstar: {
     account_owner: [...ALL_PERMISSIONS],
     admin: [...DEFAULT_PERMISSION_POLICY.admin, "settings.users.manage"],
@@ -166,6 +166,13 @@ const permissionPoliciesByAccountId: Record<string, AccountPermissionPolicy> = {
     user: [...DEFAULT_PERMISSION_POLICY.user, "settings.view"],
   },
 };
+
+let permissionPoliciesByAccountId: Record<string, AccountPermissionPolicy> = persistedStore?.permissionPoliciesByAccountId
+  ? {
+      ...defaultPermissionPoliciesByAccountId,
+      ...clone(persistedStore.permissionPoliciesByAccountId),
+    }
+  : clone(defaultPermissionPoliciesByAccountId);
 
 interface TenantData {
   products: Product[];
@@ -744,12 +751,12 @@ const defaultTenantDataByAccountId: Record<string, TenantData> = {
   }),
 };
 
-const tenantDataByAccountId: Record<string, TenantData> = persistedStore?.tenantDataByAccountId
+let tenantDataByAccountId: Record<string, TenantData> = persistedStore?.tenantDataByAccountId
   ? {
-      ...defaultTenantDataByAccountId,
-      ...persistedStore.tenantDataByAccountId,
+      ...clone(defaultTenantDataByAccountId),
+      ...clone(persistedStore.tenantDataByAccountId),
     }
-  : defaultTenantDataByAccountId;
+  : clone(defaultTenantDataByAccountId);
 
 function getTenant(accountId: string) {
   const tenant = tenantDataByAccountId[accountId];
@@ -893,6 +900,7 @@ function recordAuditEntry(accountId: string, entry: Omit<AuditLogEntry, "id">) {
     { id: `${accountId}_log_${tenant.auditLog.length + 1}`, ...entry },
     ...tenant.auditLog,
   ];
+  persistStore();
 }
 
 function syncProductInventory(accountId: string, productId: string) {
@@ -1087,6 +1095,7 @@ export function updateInventory(accountId: string, id: string, payload: Partial<
     };
   });
   if (updatedProductId) syncProductInventory(accountId, updatedProductId);
+  persistStore();
   return clone(tenant.inventory.find((item) => item.id === id) ?? null);
 }
 
@@ -1127,6 +1136,7 @@ export function updateOrder(accountId: string, id: string, payload: Partial<Orde
     timestamp: "2026-04-18",
     summary: "Order workflow updated.",
   });
+  persistStore();
   return getOrder(accountId, id);
 }
 
@@ -1191,6 +1201,7 @@ export function createDiscount(accountId: string, payload: Omit<Discount, "id" |
     timestamp: "2026-04-18",
     summary: "New rule-based discount created.",
   });
+  persistStore();
   return clone(next);
 }
 
@@ -1205,6 +1216,7 @@ export function updateDiscount(accountId: string, id: string, payload: Partial<D
     timestamp: "2026-04-18",
     summary: "Discount settings updated.",
   });
+  persistStore();
   return getDiscount(accountId, id);
 }
 
@@ -1259,6 +1271,7 @@ export function updateAccount(accountId: string, payload: Partial<Account>) {
       ...payload.profile,
     },
   };
+  persistStore();
   return clone(accountsById[accountId]);
 }
 
@@ -1275,6 +1288,7 @@ export function updateSettings(accountId: string, payload: Partial<SettingsData>
     taxes: { ...tenant.settings.taxes, ...payload.taxes },
     notifications: { ...tenant.settings.notifications, ...payload.notifications },
   };
+  persistStore();
   return clone(tenant.settings);
 }
 
@@ -1370,5 +1384,47 @@ export function updateAccountPermissions(accountId: string, payload: Partial<Acc
     admin: payload.admin ? [...payload.admin] : [...permissionPoliciesByAccountId[accountId].admin],
     user: payload.user ? [...payload.user] : [...permissionPoliciesByAccountId[accountId].user],
   };
+  persistStore();
   return clone(permissionPoliciesByAccountId[accountId]);
+}
+
+export function exportStoreSnapshot(): StoreSnapshot {
+  return clone({
+    usersById,
+    memberships,
+    tenantDataByAccountId,
+    accountsById,
+    permissionPoliciesByAccountId,
+  });
+}
+
+export function importStoreSnapshot(snapshot: Partial<StoreSnapshot>) {
+  usersById = {
+    ...clone(defaultUsersById),
+    ...clone(snapshot.usersById ?? {}),
+  };
+  memberships = snapshot.memberships ? clone(snapshot.memberships) : clone(defaultMemberships);
+  tenantDataByAccountId = snapshot.tenantDataByAccountId
+    ? {
+        ...clone(defaultTenantDataByAccountId),
+        ...clone(snapshot.tenantDataByAccountId),
+      }
+    : clone(defaultTenantDataByAccountId);
+  accountsById = snapshot.accountsById
+    ? {
+        ...clone(defaultAccountsById),
+        ...clone(snapshot.accountsById),
+      }
+    : clone(defaultAccountsById);
+  permissionPoliciesByAccountId = snapshot.permissionPoliciesByAccountId
+    ? {
+        ...clone(defaultPermissionPoliciesByAccountId),
+        ...clone(snapshot.permissionPoliciesByAccountId),
+      }
+    : clone(defaultPermissionPoliciesByAccountId);
+  persistStore();
+}
+
+export function setStorePersistHandler(handler: ((snapshot: StoreSnapshot) => void) | null) {
+  onStorePersist = handler;
 }

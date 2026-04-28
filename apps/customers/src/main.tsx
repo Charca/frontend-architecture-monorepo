@@ -20,17 +20,10 @@ const router = createRouter({
   defaultPreload: "intent",
 });
 
-void (async () => {
-  if (import.meta.env.DEV) {
-    const { worker } = await import("@commerceos/shared/mocks/browser");
-    await worker.start({ onUnhandledRequest: "bypass" });
-  }
-
-  ReactDOM.createRoot(document.getElementById("root")!).render(
-    <React.StrictMode>
-      <AppProviders>
-        <RouterProvider router={router} />
-      </AppProviders>
-    </React.StrictMode>,
-  );
-})();
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <AppProviders>
+      <RouterProvider router={router} />
+    </AppProviders>
+  </React.StrictMode>,
+);
