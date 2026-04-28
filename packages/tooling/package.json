@@ -1,0 +1,11 @@
+{
+  "name": "@commerceos/tooling",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./eslint": "./eslint.config.js",
+    "./tsconfig/base": "./tsconfig.base.json",
+    "./vite/react": "./vite.react.js"
+  }
+}
