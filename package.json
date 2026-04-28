@@ -7,12 +7,13 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace=@commerceos/app-shell",
-    "build": "npm run build --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present",
-    "typecheck": "npm run typecheck --workspaces --if-present",
-    "preview": "npm run preview --workspace=@commerceos/app-shell"
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "preview": "turbo preview"
   },
+  "packageManager": "npm@11.8.0",
   "devDependencies": {
     "@eslint/js": "^9.13.0",
     "@tailwindcss/vite": "^4.2.2",
@@ -28,6 +29,7 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.11.0",
     "tailwindcss": "^4.2.2",
+    "turbo": "^2.9.6",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.11.0",
     "vite": "^5.4.10"
