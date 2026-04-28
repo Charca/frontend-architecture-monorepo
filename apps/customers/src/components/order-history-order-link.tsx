@@ -3,6 +3,8 @@ import { Link } from "@tanstack/react-router";
 import { OrderLineItemsTable } from "@commerceos/shared/components/order-line-items-table";
 import type { Order } from "@commerceos/shared/types";
 
+export * from '../../../discounts/src/components/discount-form'
+
 interface OrderHistoryOrderLinkProps {
   order: Order;
 }
