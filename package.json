@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "turbo dev",
+    "dev": "turbo dev --filter=@commerceos/app-shell",
     "build": "turbo build",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
