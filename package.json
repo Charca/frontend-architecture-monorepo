@@ -8,9 +8,12 @@
   "packageManager": "npm@11.8.0",
   "scripts": {
     "dev": "npm run dev --workspace=apps/app-shell",
-    "build": "npm run build --workspaces --if-present",
+    "build": "turbo build",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "preview": "npm run preview --workspace=apps/app-shell"
+  },
+  "devDependencies": {
+    "turbo": "^2.9.12"
   }
 }
