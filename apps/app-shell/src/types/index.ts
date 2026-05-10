@@ -7,7 +7,7 @@ export type {
   ProductKind,
   ProductStatus,
   ProductVariant,
-} from "@/modules/catalog/domain/catalog.types";
+} from "@commerceos/catalog/domain/catalog.types";
 
 export type {
   Order,
@@ -18,14 +18,14 @@ export type {
   OrderStatus,
   PaymentStatus,
   ShipmentStatus,
-} from "@/modules/orders/domain/orders.types";
+} from "@commerceos/orders/domain/orders.types";
 
-export type { InventoryItem, InventoryStatus } from "@/modules/inventory/domain/inventory.types";
-export type { Customer, CustomerDetail, CustomerSegment } from "@/modules/customers/domain/customers.types";
-export type { Discount, DiscountRule, DiscountType } from "@/modules/discounts/domain/discounts.types";
-export type { AnalyticsOverview } from "@/modules/analytics/domain/analytics.types";
-export type { DashboardSummary } from "@/modules/dashboard/domain/dashboard.types";
-export type { Account, AccountProfile, SettingsData } from "@/modules/settings/domain/settings.types";
+export type { InventoryItem, InventoryStatus } from "@commerceos/inventory/domain/inventory.types";
+export type { Customer, CustomerDetail, CustomerSegment } from "@commerceos/customers/domain/customers.types";
+export type { Discount, DiscountRule, DiscountType } from "@commerceos/discounts/domain/discounts.types";
+export type { AnalyticsOverview } from "@commerceos/analytics/domain/analytics.types";
+export type { DashboardSummary } from "@commerceos/dashboard/domain/dashboard.types";
+export type { Account, AccountProfile, SettingsData } from "@commerceos/settings/domain/settings.types";
 export type {
   AccountMember,
   AccountPermissionPolicy,
@@ -34,5 +34,5 @@ export type {
   PermissionKey,
   RoleKey,
   SessionMembership,
-} from "@/modules/users/domain/users.types";
+} from "@commerceos/users/domain/users.types";
 export type { AuditLogEntry } from "@commerceos/shared/domain/audit-log.types";

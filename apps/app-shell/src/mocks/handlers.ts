@@ -33,8 +33,8 @@ import {
   updateOrder,
   updateProduct,
   updateSettings,
-} from "@/mocks/data/store";
-import type { Account, AccountMember, AccountPermissionPolicy, Customer, Discount, InventoryItem, Order, Product, SettingsData } from "@/types";
+} from "./data/store";
+import type { Account, AccountMember, AccountPermissionPolicy, Customer, Discount, InventoryItem, Order, Product, SettingsData } from "../types";
 
 function getToken(request: Request) {
   const header = request.headers.get("Authorization");

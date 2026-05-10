@@ -11,7 +11,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@commerceos/app-shell": "*",
+    "@commerceos/authentication": "*",
+    "@commerceos/customers": "*",
+    "@commerceos/inventory": "*",
     "@commerceos/shared": "*",
     "@commerceos/ui": "*",
     "@tanstack/react-query": "^5.59.20",
@@ -28,5 +30,16 @@
     "eslint": "^9.13.0",
     "typescript": "^5.6.3",
     "vite": "^5.4.10"
+  },
+  "exports": {
+    "./api/*": "./src/api/*.ts",
+    "./components/*": "./src/components/*.tsx",
+    "./domain/*": "./src/domain/*.ts",
+    "./features/*": "./src/features/*.tsx",
+    "./hooks/*": "./src/hooks/*.ts",
+    "./lib/*": "./src/lib/*.ts",
+    "./providers/*": "./src/providers/*.tsx",
+    "./screens/*": "./src/screens/*.tsx",
+    "./utils/*": "./src/utils/*.ts"
   }
 }

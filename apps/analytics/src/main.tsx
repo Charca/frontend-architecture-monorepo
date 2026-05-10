@@ -1,22 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "@tanstack/react-router";
-import { AppProviders } from "@/app/providers/AppProviders";
-import { createStandaloneRouter } from "@/app/router/standalone";
-import AnalyticsPage from "@/modules/analytics/screens/analytics.index";
-import "@/styles/globals.css";
-
-async function enableMocking() {
-  if (import.meta.env.DEV) {
-    const { worker } = await import("@/mocks/browser");
-    await worker.start({ onUnhandledRequest: "bypass" });
-  }
-}
+import { AuthProvider } from "@commerceos/authentication/providers/auth-provider";
+import { AppProviders } from "@commerceos/shared/providers/app-providers";
+import { createStandaloneRouter } from "@commerceos/shared/router/standalone";
+import AnalyticsPage from "@commerceos/analytics/screens/analytics.index";
+import "@commerceos/shared/styles/globals.css";
 
 const router = createStandaloneRouter([{ path: "/analytics", component: AnalyticsPage }]);
 
-void enableMocking().then(() => {
-  ReactDOM.createRoot(document.getElementById("root")!).render(
-    <React.StrictMode><AppProviders><RouterProvider router={router} /></AppProviders></React.StrictMode>,
-  );
-});
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <AppProviders>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </AppProviders>
+  </React.StrictMode>,
+);

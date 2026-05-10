@@ -1,17 +1,14 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This repo is a single React + TypeScript frontend monolith. Application code lives in `src/`.
+This app is the integrated CommerceOS shell. Shell-owned code lives in `src/`; feature modules live in sibling workspaces under `apps/*`.
 
-- `src/routes/`: route-level screens, including dynamic segments such as `orders/$orderId.tsx`
 - `src/app/`: app bootstrap, router setup, and providers
-- `src/components/`: reusable UI, forms, navigation, and shared layout pieces
 - `src/api/`: client-side data access helpers grouped by domain
 - `src/mocks/`: MSW handlers and in-memory store used during development
-- `src/styles/`: global styles
 - `public/`: static assets and the MSW worker file
 
-Use the `@/` import alias for internal modules instead of long relative paths.
+Use package imports such as `@commerceos/catalog/...` for module code and relative imports for shell-owned files. Do not add app-local path aliases.
 
 ## Build, Test, and Development Commands
 Use npm for local work.

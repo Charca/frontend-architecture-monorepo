@@ -1,4 +1,4 @@
-import { ALL_PERMISSIONS, DEFAULT_PERMISSION_POLICY } from "@/modules/users/lib/permissions";
+import { ALL_PERMISSIONS, DEFAULT_PERMISSION_POLICY } from "@commerceos/users/lib/permissions";
 import type {
   Account,
   AccountMember,
@@ -18,7 +18,7 @@ import type {
   Product,
   RoleKey,
   SettingsData,
-} from "@/types";
+} from "../../types";
 
 const DEMO_PASSWORD = "demo123";
 const STORE_PERSISTENCE_KEY = "commerceos.mock.store.v1";

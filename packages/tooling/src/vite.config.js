@@ -104,13 +104,8 @@ function avatarUploadPlugin(appRoot) {
   };
 }
 
-export function createViteConfig({ appRoot = process.cwd(), sourceRoot = path.resolve(appRoot, "src") } = {}) {
+export function createViteConfig({ appRoot = process.cwd() } = {}) {
   return defineConfig({
     plugins: [react(), tailwindcss(), avatarUploadPlugin(appRoot)],
-    resolve: {
-      alias: {
-        "@": sourceRoot,
-      },
-    },
   });
 }

@@ -1,6 +1,6 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { CircleUserRound, EllipsisVertical, LogOut, Store } from "lucide-react";
-import { useAuth } from "@/modules/authentication/providers/use-auth";
+import { useAuth } from "@commerceos/authentication/providers/use-auth";
 import { navItems } from "./nav-items";
 import {
   DropdownMenu,
@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@commerceos/ui/dropdown-menu";
 import { cn } from "@commerceos/shared/lib/utils";
-import { ROLE_LABELS } from "@/modules/users/lib/permissions";
+import { ROLE_LABELS } from "@commerceos/users/lib/permissions";
 
 export function SidebarNav() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
