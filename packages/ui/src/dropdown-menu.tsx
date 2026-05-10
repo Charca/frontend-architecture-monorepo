@@ -1,8 +1,46 @@
+import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { cn } from "@commerceos/shared/lib/utils";
 
 export const DropdownMenu = DropdownMenuPrimitive.Root;
-export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+
+export const DropdownMenuTrigger = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Trigger>
+>(({ onClick, onPointerDown, ...props }, ref) => {
+  const wasClosedOnPointerDown = React.useRef<boolean | null>(null);
+
+  return (
+    <DropdownMenuPrimitive.Trigger
+      ref={ref}
+      onPointerDown={(event) => {
+        wasClosedOnPointerDown.current = event.currentTarget.getAttribute("aria-expanded") !== "true";
+        onPointerDown?.(event);
+      }}
+      onClick={(event) => {
+        onClick?.(event);
+
+        if (event.defaultPrevented) return;
+        if (event.button !== 0 || event.ctrlKey) return;
+
+        const wasClosed = wasClosedOnPointerDown.current ?? event.currentTarget.getAttribute("aria-expanded") !== "true";
+        wasClosedOnPointerDown.current = null;
+
+        if (wasClosed && event.currentTarget.getAttribute("aria-expanded") !== "true") {
+          event.currentTarget.dispatchEvent(
+            new KeyboardEvent("keydown", {
+              key: "Enter",
+              bubbles: true,
+              cancelable: true,
+            }),
+          );
+        }
+      }}
+      {...props}
+    />
+  );
+});
+DropdownMenuTrigger.displayName = DropdownMenuPrimitive.Trigger.displayName;
 
 export function DropdownMenuContent({
   className,
