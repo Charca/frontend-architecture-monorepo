@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@commerceos/ui/dropdown-menu";
-import { cn } from "@commerceos/shared/lib/utils";
+import { cn } from "@commerceos/ui/lib/utils";
 import { ROLE_LABELS } from "@commerceos/shared/permissions/permissions";
 
 export function SidebarNav() {

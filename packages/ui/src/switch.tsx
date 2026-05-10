@@ -1,4 +1,4 @@
-import { cn } from "@commerceos/shared/lib/utils";
+import { cn } from "./lib/utils";
 
 interface SwitchProps {
   checked: boolean;

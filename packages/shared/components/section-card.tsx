@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { cn } from "@commerceos/shared/lib/utils";
+import { cn } from "@commerceos/ui/lib/utils";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@commerceos/ui/card";
 
 interface SectionCardProps {

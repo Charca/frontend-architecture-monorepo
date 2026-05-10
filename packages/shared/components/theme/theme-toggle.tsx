@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@commerceos/ui/dropdown-menu";
 import { Button } from "@commerceos/ui/button";
-import { cn } from "@commerceos/shared/lib/utils";
+import { cn } from "@commerceos/ui/lib/utils";
 
 const themeOptions: Array<{ value: Theme; label: string; icon: typeof Sun }> = [
   { value: "light", label: "Light", icon: Sun },

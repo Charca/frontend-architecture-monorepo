@@ -25,7 +25,8 @@ import { Button } from "@commerceos/ui/button";
 import { Dialog, DialogContent } from "@commerceos/ui/dialog";
 import { Input } from "@commerceos/ui/input";
 import { ROLE_LABELS } from "@commerceos/shared/permissions/permissions";
-import { formatCurrency, formatDate, cn } from "@commerceos/shared/lib/utils";
+import { formatCurrency, formatDate } from "@commerceos/shared/lib/utils";
+import { cn } from "@commerceos/ui/lib/utils";
 import type { PermissionKey } from "@commerceos/shared/domain/commerce/users.types";
 
 interface CommandMenuProps {

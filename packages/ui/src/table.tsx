@@ -1,5 +1,5 @@
 import { HTMLAttributes, TableHTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from "react";
-import { cn } from "@commerceos/shared/lib/utils";
+import { cn } from "./lib/utils";
 
 export function Table({ className, ...props }: TableHTMLAttributes<HTMLTableElement>) {
   return <table className={cn("w-full caption-bottom text-sm", className)} {...props} />;

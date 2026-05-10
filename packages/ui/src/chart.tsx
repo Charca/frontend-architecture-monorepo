@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
-import { cn } from "@commerceos/shared/lib/utils";
+import { cn } from "./lib/utils";
 
 export type ChartConfig = {
   [key: string]: {
