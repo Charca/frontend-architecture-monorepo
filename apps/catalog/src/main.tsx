@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "@tanstack/react-router";
-import { AuthProvider } from '../../authentication/src/providers/auth-provider';
+import { AuthProvider } from '@commerceos/authentication/providers/auth-provider';
 import { AppProviders } from "@commerceos/shared/providers/app-providers";
 import { createStandaloneRouter } from "@commerceos/shared/router/standalone";
 import { enableMocking } from "@commerceos/shared/mocks/browser";

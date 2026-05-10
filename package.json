@@ -11,7 +11,8 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
-    "preview": "turbo preview --filter=@commerceos/app-shell"
+    "preview": "turbo preview --filter=@commerceos/app-shell",
+    "boundaries": "turbo boundaries"
   },
   "devDependencies": {
     "turbo": "^2.9.12"
