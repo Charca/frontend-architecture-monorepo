@@ -5,9 +5,9 @@ import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { CommandMenu } from "./command-menu";
 import { SidebarNav } from "./sidebar-nav";
 import { ThemeToggle } from "./theme-toggle";
-import { Button } from "@/shared/ui/button";
-import { Select } from "@/shared/ui/select";
-import { Sheet, SheetContent, SheetTrigger } from "@/shared/ui/sheet";
+import { Button } from "@commerceos/shared/ui/button";
+import { Select } from "@commerceos/shared/ui/select";
+import { Sheet, SheetContent, SheetTrigger } from "@commerceos/shared/ui/sheet";
 import { navItems } from "./nav-items";
 import { ROLE_LABELS } from "@/modules/users/lib/permissions";
 

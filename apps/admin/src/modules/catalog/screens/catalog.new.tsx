@@ -4,13 +4,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createProduct } from "../api/products.api";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { ProductImageField } from "../components/product-image-field";
-import { PageHeader } from "@/shared/components/page-header";
-import { SectionCard } from "@/shared/components/section-card";
-import { Button } from "@/shared/ui/button";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
-import { Select } from "@/shared/ui/select";
-import { Textarea } from "@/shared/ui/textarea";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { SectionCard } from "@commerceos/shared/components/section-card";
+import { Button } from "@commerceos/shared/ui/button";
+import { Input } from "@commerceos/shared/ui/input";
+import { Label } from "@commerceos/shared/ui/label";
+import { Select } from "@commerceos/shared/ui/select";
+import { Textarea } from "@commerceos/shared/ui/textarea";
 import type { Product } from "../domain/catalog.types";
 
 function buildInitialProduct(): Omit<Product, "id"> {

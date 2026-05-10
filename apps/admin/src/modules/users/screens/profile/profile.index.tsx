@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchProfile, updateProfile } from "../../api/profile.api";
 import { AvatarField } from "../../components/avatar-field";
-import { LoadingState } from "@/shared/components/feedback/loading-state";
-import { PageHeader } from "@/shared/components/page-header";
-import { SectionCard } from "@/shared/components/section-card";
-import { Button } from "@/shared/ui/button";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { SectionCard } from "@commerceos/shared/components/section-card";
+import { Button } from "@commerceos/shared/ui/button";
+import { Input } from "@commerceos/shared/ui/input";
+import { Label } from "@commerceos/shared/ui/label";
 import type { AuthUser } from "../../domain/users.types";
 
 export default function ProfilePage() {

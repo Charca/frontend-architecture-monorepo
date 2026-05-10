@@ -1,5 +1,5 @@
-import { Input } from "@/shared/ui/input";
-import { Select } from "@/shared/ui/select";
+import { Input } from "@commerceos/shared/ui/input";
+import { Select } from "@commerceos/shared/ui/select";
 import type { Collection } from "../../domain/catalog.types";
 
 interface SearchFiltersProps {

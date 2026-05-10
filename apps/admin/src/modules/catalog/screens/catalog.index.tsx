@@ -3,11 +3,11 @@ import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "../api/products.api";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { LoadingState } from "@/shared/components/feedback/loading-state";
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
 import { useCatalogFilters } from "../hooks/use-catalog-filters";
-import { PageHeader } from "@/shared/components/page-header";
-import { SectionCard } from "@/shared/components/section-card";
-import { Button } from "@/shared/ui/button";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { SectionCard } from "@commerceos/shared/components/section-card";
+import { Button } from "@commerceos/shared/ui/button";
 import { SearchFilters } from "../features/search-filters/search-filters";
 import { ProductsTable } from "../features/products-table/products-table";
 

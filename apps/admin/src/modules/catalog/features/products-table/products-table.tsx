@@ -1,5 +1,5 @@
-import { EmptyState } from "@/shared/components/feedback/empty-state";
-import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/shared/ui/table";
+import { EmptyState } from "@commerceos/shared/components/feedback/empty-state";
+import { Table, TableBody, TableHead, TableHeader, TableRow } from "@commerceos/shared/ui/table";
 import type { Product } from "../../domain/catalog.types";
 import { ProductRow } from "./components/product-row";
 

@@ -1,6 +1,6 @@
 import { useEffect, useState, type ChangeEvent } from "react";
-import { readFileAsDataUrl, uploadAvatar } from "@/shared/api/uploads";
-import { Button } from "@/shared/ui/button";
+import { readFileAsDataUrl, uploadAvatar } from "@commerceos/shared/api/uploads";
+import { Button } from "@commerceos/shared/ui/button";
 
 interface AvatarFieldProps {
   avatarUrl?: string | null;

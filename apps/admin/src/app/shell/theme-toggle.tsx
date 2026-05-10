@@ -6,9 +6,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/shared/ui/dropdown-menu";
-import { Button } from "@/shared/ui/button";
-import { cn } from "@/shared/lib/utils";
+} from "@commerceos/shared/ui/dropdown-menu";
+import { Button } from "@commerceos/shared/ui/button";
+import { cn } from "@commerceos/shared/lib/utils";
 
 const themeOptions: Array<{ value: Theme; label: string; icon: typeof Sun }> = [
   { value: "light", label: "Light", icon: Sun },

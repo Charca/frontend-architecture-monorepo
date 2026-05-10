@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Navigate } from "@tanstack/react-router";
 import { useAuth } from "../../providers/use-auth";
 import { ThemeToggle } from "@/app/shell/theme-toggle";
-import { Button } from "@/shared/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
+import { Button } from "@commerceos/shared/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@commerceos/shared/ui/card";
+import { Input } from "@commerceos/shared/ui/input";
+import { Label } from "@commerceos/shared/ui/label";
 
 const DEMO_PASSWORD = "demo123";
 

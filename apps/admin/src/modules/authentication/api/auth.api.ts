@@ -1,5 +1,5 @@
 import type { AuthSession } from "@/modules/users/domain/users.types";
-import { apiClient } from "@/shared/api/client";
+import { apiClient } from "@commerceos/shared/api/client";
 
 export interface LoginPayload {
   email: string;

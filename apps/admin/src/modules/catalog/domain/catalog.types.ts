@@ -1,6 +1,6 @@
 import type { CustomerSegment } from "@/modules/customers/domain/customers.types";
 import type { InventoryStatus } from "@/modules/inventory/domain/inventory.types";
-import type { AuditLogEntry } from "@/shared/domain/audit-log.types";
+import type { AuditLogEntry } from "@commerceos/shared/domain/audit-log.types";
 
 export type ProductStatus = "active" | "draft" | "archived";
 export type ProductKind = "standard" | "bundle";

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import type { DiscountType } from "../domain/discounts.types";
-import { Button } from "@/shared/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
-import { Select } from "@/shared/ui/select";
-import { Switch } from "@/shared/ui/switch";
+import { Button } from "@commerceos/shared/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@commerceos/shared/ui/card";
+import { Input } from "@commerceos/shared/ui/input";
+import { Label } from "@commerceos/shared/ui/label";
+import { Select } from "@commerceos/shared/ui/select";
+import { Switch } from "@commerceos/shared/ui/switch";
 
 export interface DiscountFormValues {
   code: string;

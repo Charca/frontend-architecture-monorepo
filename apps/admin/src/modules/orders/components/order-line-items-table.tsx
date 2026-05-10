@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { OrderLineItem } from "../domain/orders.types";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/ui/table";
-import { formatCurrency } from "@/shared/lib/utils";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@commerceos/shared/ui/table";
+import { formatCurrency } from "@commerceos/shared/lib/utils";
 
 interface OrderLineItemsTableProps {
   items: OrderLineItem[];

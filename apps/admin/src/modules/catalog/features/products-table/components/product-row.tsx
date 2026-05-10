@@ -1,6 +1,6 @@
-import { StatusBadge } from "@/shared/components/status-badge";
-import { TableCell, TableRow } from "@/shared/ui/table";
-import { formatCurrency } from "@/shared/lib/utils";
+import { StatusBadge } from "@commerceos/shared/components/status-badge";
+import { TableCell, TableRow } from "@commerceos/shared/ui/table";
+import { formatCurrency } from "@commerceos/shared/lib/utils";
 import type { Product } from "../../../domain/catalog.types";
 import { ProductImageNameCell } from "./product-image-name-cell";
 

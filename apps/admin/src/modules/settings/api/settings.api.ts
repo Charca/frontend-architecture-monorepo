@@ -1,5 +1,5 @@
 import type { Account, SettingsData } from "../domain/settings.types";
-import { apiClient } from "@/shared/api/client";
+import { apiClient } from "@commerceos/shared/api/client";
 
 export function fetchAccount(accountId: string) {
   return apiClient.get<Account>(`/api/accounts/${accountId}`);

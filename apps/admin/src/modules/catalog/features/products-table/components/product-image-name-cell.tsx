@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { TableCell } from "@/shared/ui/table";
+import { TableCell } from "@commerceos/shared/ui/table";
 import type { Product } from "../../../domain/catalog.types";
 
 interface ProductImageNameCellProps {

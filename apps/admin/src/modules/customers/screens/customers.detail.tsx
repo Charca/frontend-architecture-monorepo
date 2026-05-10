@@ -4,18 +4,18 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchCustomer, updateCustomer } from "../api/customers.api";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import { OrderHistoryOrderLink } from "../components/order-history-order-link";
-import { LoadingState } from "@/shared/components/feedback/loading-state";
-import { PageHeader } from "@/shared/components/page-header";
-import { SectionCard } from "@/shared/components/section-card";
-import { StatusBadge } from "@/shared/components/status-badge";
-import { Button } from "@/shared/ui/button";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
-import { Select } from "@/shared/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/ui/table";
-import { Textarea } from "@/shared/ui/textarea";
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { SectionCard } from "@commerceos/shared/components/section-card";
+import { StatusBadge } from "@commerceos/shared/components/status-badge";
+import { Button } from "@commerceos/shared/ui/button";
+import { Input } from "@commerceos/shared/ui/input";
+import { Label } from "@commerceos/shared/ui/label";
+import { Select } from "@commerceos/shared/ui/select";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@commerceos/shared/ui/table";
+import { Textarea } from "@commerceos/shared/ui/textarea";
 import type { Customer } from "../domain/customers.types";
-import { formatCurrency, formatDate } from "@/shared/lib/utils";
+import { formatCurrency, formatDate } from "@commerceos/shared/lib/utils";
 
 export default function CustomerDetailPage() {
   const { customerId } = useParams({ from: "/customers/$customerId" });
@@ -78,15 +78,15 @@ export default function CustomerDetailPage() {
                 <TableHead>Total</TableHead>
               </TableRow>
             </TableHeader>
-              <TableBody>
-                {data.orderHistory.map((order) => (
-                  <TableRow key={order.id}>
-                    <TableCell>
-                      <OrderHistoryOrderLink order={order} />
-                    </TableCell>
-                    <TableCell className="table-cell-muted">{formatDate(order.date)}</TableCell>
-                    <TableCell>
-                      <StatusBadge status={order.status} />
+            <TableBody>
+              {data.orderHistory.map((order) => (
+                <TableRow key={order.id}>
+                  <TableCell>
+                    <OrderHistoryOrderLink order={order} />
+                  </TableCell>
+                  <TableCell className="table-cell-muted">{formatDate(order.date)}</TableCell>
+                  <TableCell>
+                    <StatusBadge status={order.status} />
                   </TableCell>
                   <TableCell>{formatCurrency(order.total)}</TableCell>
                 </TableRow>

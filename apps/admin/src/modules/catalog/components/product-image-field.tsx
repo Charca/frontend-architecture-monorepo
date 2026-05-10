@@ -1,6 +1,6 @@
 import { useEffect, useState, type ChangeEvent } from "react";
-import { readFileAsDataUrl, uploadImage } from "@/shared/api/uploads";
-import { Button } from "@/shared/ui/button";
+import { readFileAsDataUrl, uploadImage } from "@commerceos/shared/api/uploads";
+import { Button } from "@commerceos/shared/ui/button";
 
 interface ProductImageFieldProps {
   imageUrl?: string | null;

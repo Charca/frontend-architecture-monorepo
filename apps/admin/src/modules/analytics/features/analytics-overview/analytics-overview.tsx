@@ -16,12 +16,12 @@ import {
   YAxis,
 } from "recharts";
 import { fetchAnalyticsOverview } from "../../api/analytics.api";
-import { LoadingState } from "@/shared/components/feedback/loading-state";
-import { PageHeader } from "@/shared/components/page-header";
-import { StatCard } from "@/shared/components/stat-card";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/shared/ui/chart";
-import { formatCurrency, formatNumber } from "@/shared/lib/utils";
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { StatCard } from "@commerceos/shared/components/stat-card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@commerceos/shared/ui/card";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@commerceos/shared/ui/chart";
+import { formatCurrency, formatNumber } from "@commerceos/shared/lib/utils";
 import { formatAnalyticsMonth, formatAnalyticsWeek } from "../../utils/analytics-date";
 
 const CATEGORY_COLORS = ["hsl(217 91% 60%)", "hsl(199 89% 48%)", "hsl(172 66% 50%)", "hsl(38 92% 50%)", "hsl(262 83% 58%)"];

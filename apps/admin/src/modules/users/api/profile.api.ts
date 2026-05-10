@@ -1,5 +1,5 @@
 import type { AuthUser } from "../domain/users.types";
-import { apiClient } from "@/shared/api/client";
+import { apiClient } from "@commerceos/shared/api/client";
 
 export function fetchProfile() {
   return apiClient.get<AuthUser>("/api/me");

@@ -1,4 +1,4 @@
-import type { AuditLogEntry } from "@/shared/domain/audit-log.types";
+import type { AuditLogEntry } from "@commerceos/shared/domain/audit-log.types";
 
 export type OrderStatus = "pending" | "processing" | "fulfilled" | "cancelled" | "refunded";
 export type PaymentStatus = "paid" | "pending" | "refunded";

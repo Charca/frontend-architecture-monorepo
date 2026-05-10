@@ -1,5 +1,5 @@
 import type { Order } from "../domain/orders.types";
-import { apiClient } from "@/shared/api/client";
+import { apiClient } from "@commerceos/shared/api/client";
 
 export function fetchOrders() {
   return apiClient.get<Order[]>("/api/orders");

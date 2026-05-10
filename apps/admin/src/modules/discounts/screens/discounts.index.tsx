@@ -2,13 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchDiscounts } from "../api/discounts.api";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { LoadingState } from "@/shared/components/feedback/loading-state";
-import { PageHeader } from "@/shared/components/page-header";
-import { SectionCard } from "@/shared/components/section-card";
-import { StatusBadge } from "@/shared/components/status-badge";
-import { Button } from "@/shared/ui/button";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/ui/table";
-import { formatDate } from "@/shared/lib/utils";
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { SectionCard } from "@commerceos/shared/components/section-card";
+import { StatusBadge } from "@commerceos/shared/components/status-badge";
+import { Button } from "@commerceos/shared/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@commerceos/shared/ui/table";
+import { formatDate } from "@commerceos/shared/lib/utils";
 
 function formatDiscountValue(type: string, value: number) {
   if (type === "percentage") return `${value}%`;
@@ -41,44 +41,44 @@ export default function DiscountsPage() {
         }
       />
       <SectionCard>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Code</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Value</TableHead>
-                <TableHead>Rules</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Usage</TableHead>
-                <TableHead>Start</TableHead>
-                <TableHead>End</TableHead>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Code</TableHead>
+              <TableHead>Type</TableHead>
+              <TableHead>Value</TableHead>
+              <TableHead>Rules</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Usage</TableHead>
+              <TableHead>Start</TableHead>
+              <TableHead>End</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {data.map((discount) => (
+              <TableRow key={discount.id}>
+                <TableCell>
+                  <Link to="/discounts/$discountId" params={{ discountId: discount.id }} className="font-medium text-primary hover:underline">
+                    {discount.code}
+                  </Link>
+                </TableCell>
+                <TableCell>{discount.type.replace("_", " ")}</TableCell>
+                <TableCell>{formatDiscountValue(discount.type, discount.value)}</TableCell>
+                <TableCell className="table-cell-muted">
+                  {discount.rules.minimumSpend ? `Min ${discount.rules.minimumSpend}` : "No minimum"}
+                  {discount.rules.eligibleSegments.length ? ` · ${discount.rules.eligibleSegments.join(", ")}` : ""}
+                  {discount.rules.eligibleCategories.length ? ` · ${discount.rules.eligibleCategories.join(", ")}` : ""}
+                </TableCell>
+                <TableCell>
+                  <StatusBadge status={discount.active ? "active" : "inactive"} />
+                </TableCell>
+                <TableCell>{discount.usageCount}</TableCell>
+                <TableCell>{formatDate(discount.startDate)}</TableCell>
+                <TableCell>{formatDate(discount.endDate)}</TableCell>
               </TableRow>
-            </TableHeader>
-            <TableBody>
-              {data.map((discount) => (
-                <TableRow key={discount.id}>
-                  <TableCell>
-                    <Link to="/discounts/$discountId" params={{ discountId: discount.id }} className="font-medium text-primary hover:underline">
-                      {discount.code}
-                    </Link>
-                  </TableCell>
-                  <TableCell>{discount.type.replace("_", " ")}</TableCell>
-                  <TableCell>{formatDiscountValue(discount.type, discount.value)}</TableCell>
-                  <TableCell className="table-cell-muted">
-                    {discount.rules.minimumSpend ? `Min ${discount.rules.minimumSpend}` : "No minimum"}
-                    {discount.rules.eligibleSegments.length ? ` · ${discount.rules.eligibleSegments.join(", ")}` : ""}
-                    {discount.rules.eligibleCategories.length ? ` · ${discount.rules.eligibleCategories.join(", ")}` : ""}
-                  </TableCell>
-                  <TableCell>
-                    <StatusBadge status={discount.active ? "active" : "inactive"} />
-                  </TableCell>
-                  <TableCell>{discount.usageCount}</TableCell>
-                  <TableCell>{formatDate(discount.startDate)}</TableCell>
-                  <TableCell>{formatDate(discount.endDate)}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+            ))}
+          </TableBody>
+        </Table>
       </SectionCard>
     </div>
   );

@@ -2,7 +2,7 @@ import { type PropsWithChildren, useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchSession, login, logout, switchAccount } from "../api/auth.api";
 import { AuthContext, type AuthContextValue } from "./use-auth";
-import { clearStoredAuthToken, getStoredAuthToken, setStoredAuthToken } from "../../../shared/lib/auth-storage";
+import { clearStoredAuthToken, getStoredAuthToken, setStoredAuthToken } from "@commerceos/shared/lib/auth-storage";
 import { getViewPermissionForPath, ORDERED_APP_PATHS } from "@/modules/users/lib/permissions";
 import type { PermissionKey } from "@/modules/users/domain/users.types";
 

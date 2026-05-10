@@ -4,14 +4,14 @@ import { fetchOrder, updateOrder } from "../api/orders.api";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
 import type { Order } from "../domain/orders.types";
 import { OrderLineItemsTable } from "../components/order-line-items-table";
-import { LoadingState } from "@/shared/components/feedback/loading-state";
-import { ActivityHistoryCard } from "@/shared/components/activity-history-card";
-import { KeyValueList } from "@/shared/components/key-value-list";
-import { PageHeader } from "@/shared/components/page-header";
-import { SectionCard } from "@/shared/components/section-card";
-import { StatusBadge } from "@/shared/components/status-badge";
-import { Button } from "@/shared/ui/button";
-import { formatCurrency, formatDate } from "@/shared/lib/utils";
+import { LoadingState } from "@commerceos/shared/components/feedback/loading-state";
+import { ActivityHistoryCard } from "@commerceos/shared/components/activity-history-card";
+import { KeyValueList } from "@commerceos/shared/components/key-value-list";
+import { PageHeader } from "@commerceos/shared/components/page-header";
+import { SectionCard } from "@commerceos/shared/components/section-card";
+import { StatusBadge } from "@commerceos/shared/components/status-badge";
+import { Button } from "@commerceos/shared/ui/button";
+import { formatCurrency, formatDate } from "@commerceos/shared/lib/utils";
 
 export default function OrderDetailPage() {
   const { hasPermission } = useAuth();
@@ -128,7 +128,7 @@ export default function OrderDetailPage() {
 
       <div className="grid gap-6 xl:grid-cols-[2fr,1fr]">
         <SectionCard title="Line Items">
-            <OrderLineItemsTable items={data.lineItems} />
+          <OrderLineItemsTable items={data.lineItems} />
         </SectionCard>
 
         <div className="space-y-6">
@@ -167,46 +167,46 @@ export default function OrderDetailPage() {
             />
           </SectionCard>
           <SectionCard title="Returns and Refunds" contentClassName="space-y-4 text-sm">
-              <div className="space-y-2">
-                <div className="font-medium">Refunds</div>
-                {data.refunds.length ? data.refunds.map((refund) => (
-                  <div key={refund.id} className="rounded-md border p-3">
-                    <div className="flex items-center justify-between">
-                      <span>{refund.reason}</span>
-                      <span>{formatCurrency(refund.amount)}</span>
-                    </div>
-                    <div className="text-muted-foreground">{formatDate(refund.createdAt)}</div>
+            <div className="space-y-2">
+              <div className="font-medium">Refunds</div>
+              {data.refunds.length ? data.refunds.map((refund) => (
+                <div key={refund.id} className="rounded-md border p-3">
+                  <div className="flex items-center justify-between">
+                    <span>{refund.reason}</span>
+                    <span>{formatCurrency(refund.amount)}</span>
                   </div>
-                )) : <div className="text-muted-foreground">No refunds recorded.</div>}
-              </div>
-              <div className="space-y-2">
-                <div className="font-medium">Returns</div>
-                {data.returns.length ? data.returns.map((entry) => (
-                  <div key={entry.id} className="rounded-md border p-3">
-                    <div className="flex items-center justify-between">
-                      <span>{entry.productName}</span>
-                      <StatusBadge status={entry.status} />
-                    </div>
-                    <div className="text-muted-foreground">
-                      Qty {entry.quantity} · {formatDate(entry.createdAt)}
-                    </div>
+                  <div className="text-muted-foreground">{formatDate(refund.createdAt)}</div>
+                </div>
+              )) : <div className="text-muted-foreground">No refunds recorded.</div>}
+            </div>
+            <div className="space-y-2">
+              <div className="font-medium">Returns</div>
+              {data.returns.length ? data.returns.map((entry) => (
+                <div key={entry.id} className="rounded-md border p-3">
+                  <div className="flex items-center justify-between">
+                    <span>{entry.productName}</span>
+                    <StatusBadge status={entry.status} />
                   </div>
-                )) : <div className="text-muted-foreground">No returns recorded.</div>}
-              </div>
-              <div className="space-y-2">
-                <div className="font-medium">Exchanges</div>
-                {data.exchanges.length ? data.exchanges.map((entry) => (
-                  <div key={entry.id} className="rounded-md border p-3">
-                    <div className="flex items-center justify-between">
-                      <span>{entry.originalProductName}</span>
-                      <StatusBadge status={entry.status} />
-                    </div>
-                    <div className="text-muted-foreground">
-                      For {entry.replacementProductName} · {formatDate(entry.createdAt)}
-                    </div>
+                  <div className="text-muted-foreground">
+                    Qty {entry.quantity} · {formatDate(entry.createdAt)}
                   </div>
-                )) : <div className="text-muted-foreground">No exchanges recorded.</div>}
-              </div>
+                </div>
+              )) : <div className="text-muted-foreground">No returns recorded.</div>}
+            </div>
+            <div className="space-y-2">
+              <div className="font-medium">Exchanges</div>
+              {data.exchanges.length ? data.exchanges.map((entry) => (
+                <div key={entry.id} className="rounded-md border p-3">
+                  <div className="flex items-center justify-between">
+                    <span>{entry.originalProductName}</span>
+                    <StatusBadge status={entry.status} />
+                  </div>
+                  <div className="text-muted-foreground">
+                    For {entry.replacementProductName} · {formatDate(entry.createdAt)}
+                  </div>
+                </div>
+              )) : <div className="text-muted-foreground">No exchanges recorded.</div>}
+            </div>
           </SectionCard>
           <SectionCard title="Notes" contentClassName="text-sm text-muted-foreground">
             {data.notes || "No notes available."}

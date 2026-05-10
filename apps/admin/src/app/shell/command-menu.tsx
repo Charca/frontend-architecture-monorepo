@@ -21,11 +21,11 @@ import { fetchOrders } from "@/modules/orders/api/orders.api";
 import { fetchProducts } from "@/modules/catalog/api/products.api";
 import { fetchAccountUsers } from "@/modules/users/api/account-access.api";
 import { useAuth } from "@/modules/authentication/providers/use-auth";
-import { Button } from "@/shared/ui/button";
-import { Dialog, DialogContent } from "@/shared/ui/dialog";
-import { Input } from "@/shared/ui/input";
+import { Button } from "@commerceos/shared/ui/button";
+import { Dialog, DialogContent } from "@commerceos/shared/ui/dialog";
+import { Input } from "@commerceos/shared/ui/input";
 import { ROLE_LABELS } from "@/modules/users/lib/permissions";
-import { formatCurrency, formatDate, cn } from "@/shared/lib/utils";
+import { formatCurrency, formatDate, cn } from "@commerceos/shared/lib/utils";
 import type { PermissionKey } from "@/modules/users/domain/users.types";
 
 interface CommandMenuProps {
@@ -260,22 +260,22 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
         icon: section.icon,
         permission:
           section.id === "store-profile" ? "settings.account_profile.manage" :
-          section.id === "shipping" ? "settings.shipping.manage" :
-          section.id === "taxes" ? "settings.tax.manage" :
-          section.id === "notifications" ? "settings.notifications.manage" :
-          "settings.view",
+            section.id === "shipping" ? "settings.shipping.manage" :
+              section.id === "taxes" ? "settings.tax.manage" :
+                section.id === "notifications" ? "settings.notifications.manage" :
+                  "settings.view",
         run: () => navigateAndClose(() => navigate({ to: "/settings", hash: section.id })),
       })),
       ...(session?.memberships.length
         ? session.memberships.map((membership) => ({
-            id: `account-${membership.account.id}`,
-            label: `Switch to ${membership.account.name}`,
-            section: "Accounts",
-            subtitle: ROLE_LABELS[membership.role],
-            keywords: `${membership.account.name} account switch tenant ${membership.role}`,
-            icon: Cog,
-            run: () => navigateAndClose(() => switchAccount(membership.account.id)),
-          }))
+          id: `account-${membership.account.id}`,
+          label: `Switch to ${membership.account.name}`,
+          section: "Accounts",
+          subtitle: ROLE_LABELS[membership.role],
+          keywords: `${membership.account.name} account switch tenant ${membership.role}`,
+          icon: Cog,
+          run: () => navigateAndClose(() => switchAccount(membership.account.id)),
+        }))
         : []),
     ];
 
