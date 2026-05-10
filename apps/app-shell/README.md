@@ -33,7 +33,7 @@ npm run typecheck
 
 ## Notes
 
-- All data is mocked in `src/mocks`.
+- All data is mocked in `packages/shared/mocks`.
 - There is no real backend.
 - Mutations update in-memory mock state through MSW handlers.
 - The structure intentionally stays centralized and route-oriented to reflect an early frontend monolith.

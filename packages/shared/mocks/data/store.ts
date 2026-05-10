@@ -1,24 +1,28 @@
 import { ALL_PERMISSIONS, DEFAULT_PERMISSION_POLICY } from "@commerceos/shared/permissions/permissions";
 import type {
   Account,
+  SettingsData,
+} from "@commerceos/shared/domain/commerce/settings.types";
+import type {
   AccountMember,
   AccountPermissionPolicy,
-  AnalyticsOverview,
-  AuditLogEntry,
   AuthSession,
   AuthUser,
-  Collection,
-  Customer,
-  DashboardSummary,
-  Discount,
-  InventoryItem,
-  Order,
   PermissionKey,
+  RoleKey,
+} from "@commerceos/shared/domain/commerce/users.types";
+import type { AnalyticsOverview } from "@commerceos/shared/domain/commerce/analytics.types";
+import type { AuditLogEntry } from "@commerceos/shared/domain/audit-log.types";
+import type {
+  Collection,
   PriceList,
   Product,
-  RoleKey,
-  SettingsData,
-} from "../../types";
+} from "@commerceos/shared/domain/commerce/catalog.types";
+import type { Customer } from "@commerceos/shared/domain/commerce/customers.types";
+import type { DashboardSummary } from "@commerceos/shared/domain/commerce/dashboard.types";
+import type { Discount } from "@commerceos/shared/domain/commerce/discounts.types";
+import type { InventoryItem } from "@commerceos/shared/domain/commerce/inventory.types";
+import type { Order } from "@commerceos/shared/domain/commerce/orders.types";
 
 const DEMO_PASSWORD = "demo123";
 const STORE_PERSISTENCE_KEY = "commerceos.mock.store.v1";

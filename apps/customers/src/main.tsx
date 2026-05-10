@@ -4,6 +4,7 @@ import { RouterProvider } from "@tanstack/react-router";
 import { AuthProvider } from "@commerceos/authentication/providers/auth-provider";
 import { AppProviders } from "@commerceos/shared/providers/app-providers";
 import { createStandaloneRouter } from "@commerceos/shared/router/standalone";
+import { enableMocking } from "@commerceos/shared/mocks/browser";
 import CustomersPage from "@commerceos/customers/screens/customers.index";
 import CustomerDetailPage from "@commerceos/customers/screens/customers.detail";
 import "@commerceos/shared/styles/globals.css";
@@ -13,12 +14,14 @@ const router = createStandaloneRouter([
   { path: "/customers/$customerId", component: CustomerDetailPage },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <AppProviders>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </AppProviders>
-  </React.StrictMode>,
-);
+void enableMocking().then(() => {
+  ReactDOM.createRoot(document.getElementById("root")!).render(
+    <React.StrictMode>
+      <AppProviders>
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </AppProviders>
+    </React.StrictMode>,
+  );
+});

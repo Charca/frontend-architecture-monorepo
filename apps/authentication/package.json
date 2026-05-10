@@ -29,16 +29,8 @@
     "vite": "^5.4.10"
   },
   "exports": {
-    "./api/*": "./src/api/*.ts",
-    "./components/*": "./src/components/*.tsx",
-    "./domain/*": "./src/domain/*.ts",
-    "./features/*": "./src/features/*.tsx",
-    "./hooks/*": "./src/hooks/*.ts",
-    "./lib/*": "./src/lib/*.ts",
     "./providers/auth-provider": "./src/providers/auth-provider.tsx",
     "./providers/use-auth": "./src/providers/use-auth.ts",
-    "./providers/*": "./src/providers/*.tsx",
-    "./screens/*": "./src/screens/*.tsx",
-    "./utils/*": "./src/utils/*.ts"
+    "./screens/login/login": "./src/screens/login/login.tsx"
   }
 }

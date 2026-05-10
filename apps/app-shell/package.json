@@ -68,7 +68,6 @@
   },
   "exports": {
     "./app/*": "./src/app/*",
-    "./mocks/*": "./src/mocks/*",
     "./types": "./src/types/index.ts"
   }
 }

@@ -5,7 +5,7 @@ This app is the integrated CommerceOS shell. Shell-owned code lives in `src/`; f
 
 - `src/app/`: app bootstrap, router setup, and providers
 - `src/api/`: client-side data access helpers grouped by domain
-- `src/mocks/`: MSW handlers and in-memory store used during development
+- `../../packages/shared/mocks/`: shared MSW handlers and in-memory store used during development
 - `public/`: static assets and the MSW worker file
 
 Use package imports such as `@commerceos/catalog/screens/...` for module screens and relative imports for shell-owned files. Do not add app-local path aliases.

@@ -34,7 +34,16 @@ import {
   updateProduct,
   updateSettings,
 } from "./data/store";
-import type { Account, AccountMember, AccountPermissionPolicy, Customer, Discount, InventoryItem, Order, Product, SettingsData } from "../types";
+import type { Product } from "@commerceos/shared/domain/commerce/catalog.types";
+import type { Customer } from "@commerceos/shared/domain/commerce/customers.types";
+import type { Discount } from "@commerceos/shared/domain/commerce/discounts.types";
+import type { InventoryItem } from "@commerceos/shared/domain/commerce/inventory.types";
+import type { Order } from "@commerceos/shared/domain/commerce/orders.types";
+import type { Account, SettingsData } from "@commerceos/shared/domain/commerce/settings.types";
+import type {
+  AccountMember,
+  AccountPermissionPolicy,
+} from "@commerceos/shared/domain/commerce/users.types";
 
 function getToken(request: Request) {
   const header = request.headers.get("Authorization");
