@@ -3,8 +3,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchSession, login, logout, switchAccount } from "../api/auth.api";
 import { AuthContext, type AuthContextValue } from "./use-auth";
 import { clearStoredAuthToken, getStoredAuthToken, setStoredAuthToken } from "@commerceos/shared/lib/auth-storage";
-import { getViewPermissionForPath, ORDERED_APP_PATHS } from "@commerceos/users/lib/permissions";
-import type { PermissionKey } from "@commerceos/users/domain/users.types";
+import { getViewPermissionForPath, ORDERED_APP_PATHS } from "@commerceos/shared/permissions/permissions";
+import type { PermissionKey } from "@commerceos/shared/domain/commerce/users.types";
 
 export function AuthProvider({ children }: PropsWithChildren) {
   const queryClient = useQueryClient();

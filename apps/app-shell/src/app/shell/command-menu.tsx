@@ -16,17 +16,17 @@ import {
   Truck,
   Users,
 } from "lucide-react";
-import { fetchCustomers } from "@commerceos/customers/api/customers.api";
-import { fetchOrders } from "@commerceos/orders/api/orders.api";
-import { fetchProducts } from "@commerceos/catalog/api/products.api";
-import { fetchAccountUsers } from "@commerceos/users/api/account-access.api";
+import { fetchCustomers } from "@commerceos/shared/api/commerce/customers.api";
+import { fetchOrders } from "@commerceos/shared/api/commerce/orders.api";
+import { fetchProducts } from "@commerceos/shared/api/commerce/products.api";
+import { fetchAccountUsers } from "@commerceos/shared/api/commerce/account-access.api";
 import { useAuth } from "@commerceos/authentication/providers/use-auth";
 import { Button } from "@commerceos/ui/button";
 import { Dialog, DialogContent } from "@commerceos/ui/dialog";
 import { Input } from "@commerceos/ui/input";
-import { ROLE_LABELS } from "@commerceos/users/lib/permissions";
+import { ROLE_LABELS } from "@commerceos/shared/permissions/permissions";
 import { formatCurrency, formatDate, cn } from "@commerceos/shared/lib/utils";
-import type { PermissionKey } from "@commerceos/users/domain/users.types";
+import type { PermissionKey } from "@commerceos/shared/domain/commerce/users.types";
 
 interface CommandMenuProps {
   open: boolean;

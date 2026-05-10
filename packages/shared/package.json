@@ -18,6 +18,7 @@
     "./components/theme/*": "./components/theme/*.tsx",
     "./domain/*": "./domain/*.ts",
     "./lib/*": "./lib/*.ts",
+    "./permissions/*": "./permissions/*.ts",
     "./providers/*": "./providers/*.tsx",
     "./router/*": "./router/*.tsx",
     "./styles/globals.css": "./styles/globals.css",

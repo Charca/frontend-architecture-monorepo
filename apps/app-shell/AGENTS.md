@@ -8,7 +8,7 @@ This app is the integrated CommerceOS shell. Shell-owned code lives in `src/`; f
 - `src/mocks/`: MSW handlers and in-memory store used during development
 - `public/`: static assets and the MSW worker file
 
-Use package imports such as `@commerceos/catalog/...` for module code and relative imports for shell-owned files. Do not add app-local path aliases.
+Use package imports such as `@commerceos/catalog/screens/...` for module screens and relative imports for shell-owned files. Do not add app-local path aliases.
 
 ## Build, Test, and Development Commands
 Use npm for local work.

@@ -9,7 +9,7 @@ import { Button } from "@commerceos/ui/button";
 import { Select } from "@commerceos/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "@commerceos/ui/sheet";
 import { navItems } from "./nav-items";
-import { ROLE_LABELS } from "@commerceos/users/lib/permissions";
+import { ROLE_LABELS } from "@commerceos/shared/permissions/permissions";
 
 function getPageTitle(pathname: string) {
   if (pathname === "/") return "Dashboard";

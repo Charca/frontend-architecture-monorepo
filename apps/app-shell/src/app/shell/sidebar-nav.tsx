@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@commerceos/ui/dropdown-menu";
 import { cn } from "@commerceos/shared/lib/utils";
-import { ROLE_LABELS } from "@commerceos/users/lib/permissions";
+import { ROLE_LABELS } from "@commerceos/shared/permissions/permissions";
 
 export function SidebarNav() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });

@@ -1,4 +1,4 @@
-import type { AuthSession } from "@commerceos/users/domain/users.types";
+import type { AuthSession } from "@commerceos/shared/domain/commerce/users.types";
 import { apiClient } from "@commerceos/shared/api/client";
 
 export interface LoginPayload {

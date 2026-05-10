@@ -1,4 +1,4 @@
-import { ALL_PERMISSIONS, DEFAULT_PERMISSION_POLICY } from "@commerceos/users/lib/permissions";
+import { ALL_PERMISSIONS, DEFAULT_PERMISSION_POLICY } from "@commerceos/shared/permissions/permissions";
 import type {
   Account,
   AccountMember,

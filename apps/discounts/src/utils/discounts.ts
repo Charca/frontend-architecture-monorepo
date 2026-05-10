@@ -1,4 +1,4 @@
-import type { CustomerSegment } from "@commerceos/customers/domain/customers.types";
+import type { CustomerSegment } from "@commerceos/shared/domain/commerce/customers.types";
 import type { Discount } from "../domain/discounts.types";
 import type { DiscountFormValues } from "../components/discount-form";
 

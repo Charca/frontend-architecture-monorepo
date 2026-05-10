@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { AuthSession, PermissionKey } from "@commerceos/users/domain/users.types";
+import type { AuthSession, PermissionKey } from "@commerceos/shared/domain/commerce/users.types";
 import type { LoginPayload } from "../api/auth.api";
 
 export interface AuthContextValue {
