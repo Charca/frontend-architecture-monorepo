@@ -7,11 +7,11 @@
   ],
   "packageManager": "npm@11.8.0",
   "scripts": {
-    "dev": "npm run dev --workspace=apps/app-shell",
+    "dev": "turbo dev --filter=@commerceos/app-shell",
     "build": "turbo build",
-    "lint": "npm run lint --workspaces --if-present",
-    "typecheck": "npm run typecheck --workspaces --if-present",
-    "preview": "npm run preview --workspace=apps/app-shell"
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "preview": "turbo preview --filter=@commerceos/app-shell"
   },
   "devDependencies": {
     "turbo": "^2.9.12"
