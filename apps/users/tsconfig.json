@@ -1,0 +1,25 @@
+{
+  "extends": "../../packages/tooling/tsconfig.vite.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "../app-shell/src/*"
+      ],
+      "@commerceos/shared/*": [
+        "../../packages/shared/*"
+      ],
+      "@commerceos/ui/*": [
+        "../../packages/ui/src/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "../app-shell/src"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}

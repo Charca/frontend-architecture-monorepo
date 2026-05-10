@@ -1,4 +1,13 @@
 {
   "name": "@commerceos/shared",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@commerceos/ui": "*"
+  },
+  "exports": {
+    "./api/*": "./api/*",
+    "./components/*": "./components/*",
+    "./domain/*": "./domain/*",
+    "./lib/*": "./lib/*"
+  }
 }

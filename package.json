@@ -6,10 +6,10 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace=apps/admin",
-    "build": "npm run build --workspace=apps/admin",
-    "lint": "npm run lint --workspace=apps/admin",
-    "typecheck": "npm run typecheck --workspace=apps/admin",
-    "preview": "npm run preview --workspace=apps/admin"
+    "dev": "npm run dev --workspace=apps/app-shell",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "preview": "npm run preview --workspace=apps/app-shell"
   }
 }

@@ -1,4 +1,4 @@
-import { Switch } from "@commerceos/shared/ui/switch";
+import { Switch } from "@commerceos/ui/switch";
 
 interface ToggleSettingRowProps {
   title: string;
