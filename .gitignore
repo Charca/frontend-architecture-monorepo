@@ -1,6 +1,6 @@
 node_modules/
 dist/
-public/uploads/
+**/public/uploads/
 
 .DS_Store
 
