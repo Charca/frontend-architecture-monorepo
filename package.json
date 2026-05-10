@@ -5,6 +5,7 @@
     "apps/*",
     "packages/*"
   ],
+  "packageManager": "npm@11.8.0",
   "scripts": {
     "dev": "npm run dev --workspace=apps/app-shell",
     "build": "npm run build --workspaces --if-present",
