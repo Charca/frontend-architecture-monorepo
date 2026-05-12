@@ -1,6 +1,10 @@
 # CommerceOS Admin
 
-CommerceOS Admin is a simple ecommerce admin panel starter app built for frontend architecture workshops. It uses a single integrated React application with mock data, MSW-backed API handlers, route-oriented screens, and straightforward state flow.
+This is an example e-commerce admin platform built for the [Frontend Architecture: Monoliths to Micro-Frontends](https://github.com/Charca/fem-frontend-architecture) workshop on Frontend Masters.
+
+This repo will serve as a foundation for the exercises in the workshop, as well as providing a concrete implementation when discussing architectural concepts.
+
+_Note:_ There is no real data persistance or authentication in this repo. Depending on which repo you're looking at, the data is stored either in memory using MSW, or in a local `db.json` file.
 
 ## Stack
 
@@ -12,7 +16,6 @@ CommerceOS Admin is a simple ecommerce admin panel starter app built for fronten
 - TanStack Query
 - Tailwind CSS
 - shadcn-style UI primitives
-- MSW
 - lucide-react
 
 ## Run
@@ -30,10 +33,3 @@ npm run build
 npm run lint
 npm run typecheck
 ```
-
-## Notes
-
-- All data is mocked in `src/mocks`.
-- There is no real backend.
-- Mutations update in-memory mock state through MSW handlers.
-- The structure intentionally stays centralized and route-oriented to reflect an early frontend monolith.
